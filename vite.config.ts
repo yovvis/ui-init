@@ -1,9 +1,15 @@
-import { defineConfig, loadEnv } from 'vite'
 import { fileURLToPath, URL } from 'node:url'
-
+import path from 'node:path'
+import { defineConfig, loadEnv } from 'vite'
 import vue from '@vitejs/plugin-vue'
+import AutoImport from 'unplugin-auto-import/vite'
+import Components from 'unplugin-vue-components/vite'
+import Icons from 'unplugin-icons/vite'
+import { AntDesignVueResolver } from 'unplugin-vue-components/resolvers'
+import IconsResolver from 'unplugin-icons/resolver'
 import Inspect from 'vite-plugin-inspect'
 
+const rootPath = fileURLToPath(new URL('./', import.meta.url))
 export default defineConfig(({ command, mode }) => {
   const env = loadEnv(mode, process.cwd(), '')
   console.log(command, '---command')
@@ -15,7 +21,39 @@ export default defineConfig(({ command, mode }) => {
       open: true,
       hmr: true,
     },
-    plugins: [vue(), Inspect()],
+    plugins: [
+      vue(),
+      AutoImport({
+        // 自动导入 Vue 相关函数，如：ref, reactive, toRef 等
+        imports: ['vue'],
+        resolvers: [
+          // 自动导入图标组件
+          IconsResolver({
+            prefix: 'Icon',
+            enabledCollections: ['ant-design'],
+          }),
+        ],
+        dts: path.resolve(rootPath, 'auto-imports.d.ts'),
+      }),
+      Components({
+        resolvers: [
+          // Auto register icon components
+          // 自动注册图标组件
+          IconsResolver({
+            enabledCollections: ['ant-design'],
+          }),
+          // Auto register Ant Design Vue components
+          AntDesignVueResolver({
+            importStyle: false, // css in js
+          }),
+        ],
+        dts: path.resolve(rootPath, 'components.d.ts'),
+      }),
+      Icons({
+        autoInstall: true,
+      }),
+      Inspect(),
+    ],
     resolve: {
       alias: {
         '@': fileURLToPath(new URL('./src', import.meta.url)),
