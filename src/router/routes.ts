@@ -1,22 +1,27 @@
 import type { RouteRecordRaw } from 'vue-router'
-import BasicLayout from '@/layouts/basic-layout.vue'
+import HomeView from '@/views/home-view.vue'
 // 路由菜单
 const routes: Array<RouteRecordRaw> = [
   {
     path: '/',
     name: 'home',
-    component: BasicLayout,
-    redirect: '/homeview',
-    children: [
-      {
-        path: '/homeview',
-        component: () => import('@/views/home-view.vue'),
-        name: 'homeview',
-        meta: {
-          title: '首页',
-        },
-      },
-    ],
+    component: HomeView,
+  },
+  {
+    path: '/user/login',
+    name: 'userLogin',
+    component: HomeView,
+  },
+  {
+    path: '/user/register',
+    name: 'userRegister',
+    component: HomeView,
+  },
+  {
+    path: '/admin/userManage',
+    name: 'adminUserManage',
+    component: HomeView,
   },
 ]
+
 export default routes

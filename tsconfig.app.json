@@ -11,7 +11,7 @@
     ],
     "skipLibCheck": true,
     /* Bundler mode */
-    "moduleResolution": "Bundler",
+    "moduleResolution": "node",
     "allowImportingTsExtensions": true,
     "isolatedModules": true,
     "moduleDetection": "force",
@@ -23,7 +23,7 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
     "noUncheckedSideEffectImports": true,
-    /* fox */
+    /* common */
     "baseUrl": ".",
     "paths": {
       "@/*": [
@@ -34,6 +34,7 @@
   "include": [
     "src/**/*.ts",
     "src/**/*.tsx",
-    "src/**/*.vue"
+    "src/**/*.vue",
+    "src/**/*.d.ts"
   ]
 }

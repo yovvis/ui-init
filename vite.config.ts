@@ -9,7 +9,7 @@ import { AntDesignVueResolver } from 'unplugin-vue-components/resolvers'
 import IconsResolver from 'unplugin-icons/resolver'
 import Inspect from 'vite-plugin-inspect'
 
-const rootPath = fileURLToPath(new URL('./', import.meta.url))
+const srcPath = fileURLToPath(new URL('./src', import.meta.url))
 export default defineConfig(({ command, mode }) => {
   const env = loadEnv(mode, process.cwd(), '')
   console.log(command, '---command')
@@ -18,7 +18,7 @@ export default defineConfig(({ command, mode }) => {
     server: {
       port: parseInt(env.VITE_APP_PORT),
       host: '0.0.0.0',
-      open: true,
+      open: false,
       hmr: true,
     },
     plugins: [
@@ -33,7 +33,7 @@ export default defineConfig(({ command, mode }) => {
             enabledCollections: ['ant-design'],
           }),
         ],
-        dts: path.resolve(rootPath, 'auto-imports.d.ts'),
+        dts: path.resolve(srcPath, 'auto-imports.d.ts'),
       }),
       Components({
         resolvers: [
@@ -47,7 +47,7 @@ export default defineConfig(({ command, mode }) => {
             importStyle: false, // css in js
           }),
         ],
-        dts: path.resolve(rootPath, 'components.d.ts'),
+        dts: path.resolve(srcPath, 'components.d.ts'),
       }),
       Icons({
         autoInstall: true,
