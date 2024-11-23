@@ -16,7 +16,7 @@
 </template>
 
 <script lang="ts" setup>
-import BasicHeader from '@/components/basic-header.vue'
+import BasicHeader from '@/components/layouts/header/f-header.vue'
 </script>
 
 <style scoped lang="scss">

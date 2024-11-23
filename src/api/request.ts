@@ -21,15 +21,14 @@ myAxios.interceptors.request.use(
 // Add a response interceptor
 myAxios.interceptors.response.use(
   function (response) {
-    console.log(response)
-
+    // console.log("resp->",response)
     const { data } = response
-    console.log(data)
+    console.log('res->', data)
     // 未登录
     if (data.code === 40100) {
       // 不是获取用户信息接口，或者不是登录页面，则跳转到登录页面
       if (
-        !response.request.responseURL.includes('user/current') &&
+        !response.request.responseURL.includes('user/get/login') &&
         !window.location.pathname.includes('/user/login')
       ) {
         window.location.href = `/user/login?redirect=${window.location.href}`
