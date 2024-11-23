@@ -12,15 +12,18 @@
 body {
   cursor: url(./Default-Select.cur), auto;
 }
-button,a:hover{
+button,
+a:hover {
   cursor: url(./Link-Select.cur), pointer;
 }
-input{
+input {
   cursor: url(./Text-Select.cur), text;
 }
-textarea,input:focus {
+textarea,
+input:focus {
   cursor: url(./Handwriting.cur), text;
 }
-[data-fancybox="gallery"], [data-fancybox="images"]{
+[data-fancybox='gallery'],
+[data-fancybox='images'] {
   cursor: url(./zoom-in.cur), zoom-in;
 }
