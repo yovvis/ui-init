@@ -13,10 +13,22 @@
       <a-col flex="80px">
         <div class="right">
           <div v-if="userStore.loginUser.id">
-            {{ userStore.loginUser.userName ?? '无名' }}
+            <a-dropdown placement="bottom">
+              <a-avatar :src="userStore.loginUser?.userAvatar ?? notLoginUser"></a-avatar>
+              <template #overlay>
+                <a-menu>
+                  <a-menu-item @click="doDropItemClick('profile')">
+                    <span>用户中心 </span>
+                  </a-menu-item>
+                  <a-menu-item @click="doDropItemClick('logout')">
+                    <span>退出登录 </span></a-menu-item
+                  >
+                </a-menu>
+              </template>
+            </a-dropdown>
           </div>
           <div v-else>
-            <a-button type="primary" href="/user/login">登录</a-button>
+            <a-button type="primary" href="/uc/login">登录</a-button>
           </div>
         </div>
       </a-col>
@@ -25,7 +37,20 @@
 </template>
 <script lang="ts" setup>
 import { useUserStore } from '@/stores/userStore.ts'
+import notLoginUser from '@/assets/notLogin.png'
+import router from '@/router'
+
 const userStore = useUserStore()
+
+const doDropItemClick = (key: string) => {
+  if (key === 'logout') {
+    userStore.doLogout()
+    router.push('/uc/login')
+  }
+  if (key === 'profile') {
+    router.push('/uc/profile')
+  }
+}
 </script>
 <style scoped lang="scss">
 .basic-header {

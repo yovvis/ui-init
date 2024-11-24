@@ -1,6 +1,6 @@
 import { ref } from 'vue'
 import { defineStore } from 'pinia'
-import { getCurrentUser } from '@/api/user.ts'
+import { getCurrentUser, userLogout } from '@/api/user.ts'
 import ACCESS_ENUM from '@/hooks/access/accessEnum.ts'
 
 interface LoginUserVO {
@@ -40,5 +40,12 @@ export const useUserStore = defineStore('userStore', () => {
     loginUser.value = newLoginUser
   }
 
-  return { loginUser, fetchLoginUser, setLoginUser }
+  /**
+   * 用户退出
+   */
+  async function doLogout() {
+    await userLogout()
+  }
+
+  return { loginUser, fetchLoginUser, setLoginUser, doLogout }
 })
