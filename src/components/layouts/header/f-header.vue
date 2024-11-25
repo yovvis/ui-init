@@ -4,7 +4,7 @@
       <a-col flex="150px">
         <div class="title-bar">
           <img class="logo" src="../../../assets/logo.png" alt="logo" />
-          <div class="title">亿智狐API</div>
+          <div class="title">初始化UI</div>
         </div>
       </a-col>
       <a-col flex="auto">

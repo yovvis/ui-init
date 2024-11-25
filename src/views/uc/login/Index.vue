@@ -36,12 +36,12 @@
 import { useRouter } from 'vue-router'
 import { useUserStore } from '@/stores/userStore.ts'
 import { message } from 'ant-design-vue'
-import { userLogin } from '@/api/user.ts'
+import { userLoginUsingPost } from '@/api/userController.ts'
 
 /**
  * 表单信息
  */
-const form = reactive({
+const form: API.UserLoginRequest = reactive({
   userAccount: '',
   userPassword: '',
 })
@@ -53,7 +53,7 @@ const userStore = useUserStore()
  * @param data
  */
 const handleSubmit = async () => {
-  const res = await userLogin(form)
+  const res = await userLoginUsingPost(form)
   // 登录成功，跳转到主页
   if (res.data.code === 0 && res.data.data) {
     await userStore.fetchLoginUser()

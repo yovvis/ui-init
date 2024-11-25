@@ -5,6 +5,7 @@
 </template>
 
 <script lang="ts" setup>
+
 const msg = 'Hello World, 你将拥有丝滑的体验!'
 </script>
 
