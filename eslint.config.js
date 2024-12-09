@@ -12,6 +12,7 @@ export default [
     name: 'app/files-to-ignore',
     ignores: ['**/dist/**', '**/dist-ssr/**', '**/coverage/**'],
   },
+
   ...pluginVue.configs['flat/essential'],
   ...vueTsEslintConfig(),
   skipFormatting,
@@ -21,5 +22,5 @@ export default [
       '@typescript-eslint/no-explicit-any': 'off', // 关闭 no-explicit-any 规则
       '@typescript-eslint/ban-ts-comment': 'off', // 关闭 ban-ts-comment 规则
     },
-  },
+  }
 ]

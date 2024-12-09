@@ -46,6 +46,7 @@ export async function uploadFileUsingPost(
       ...params,
     },
     data: formData,
+    // @ts-ignore
     requestType: 'form',
     ...(options || {}),
   })

@@ -1,5 +1,5 @@
 // @ts-ignore
-
+/* eslint-disable */
 import request from '@/core/request.ts'
 
 /** addUser POST /api/user/add */
