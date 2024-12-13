@@ -41,18 +41,6 @@ const routes: Array<RouteRecordRaw> = [
       icon: 'ant-design:crown-outlined',
       roles: ['admin'],
     },
-    children: [
-      {
-        path: '/console/usermanage/test',
-        name: 'userManageTest',
-        component: HomePage,
-        meta: {
-          label: 'test',
-          icon: 'ant-design:crown-outlined',
-          roles: ['vip'],
-        },
-      },
-    ],
   },
 ]
 
