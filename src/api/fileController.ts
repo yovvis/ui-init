@@ -1,6 +1,6 @@
 // @ts-ignore
 /* eslint-disable */
-import request from '@/request.ts'
+import request from '@/request'
 
 /** delete PUT /api/file/delete */
 export async function deleteUsingPut(
@@ -8,7 +8,7 @@ export async function deleteUsingPut(
   params: API.deleteUsingPUTParams,
   options?: { [key: string]: any },
 ) {
-  return request<API.BaseResponse>('/api/file/delete', {
+  return request<API.BaseResponseBoolean_>('/api/file/delete', {
     method: 'PUT',
     params: {
       ...params,
@@ -38,7 +38,7 @@ export async function getHttpUrlUsingGet(
   params: API.getHttpUrlUsingGETParams,
   options?: { [key: string]: any },
 ) {
-  return request<API.BaseResponse>('/api/file/getHttpUrl', {
+  return request<API.BaseResponseString_>('/api/file/getHttpUrl', {
     method: 'GET',
     params: {
       ...params,
@@ -49,7 +49,7 @@ export async function getHttpUrlUsingGet(
 
 /** listObjs GET /api/file/listObjs */
 export async function listObjsUsingGet(options?: { [key: string]: any }) {
-  return request<API.BaseResponse>('/api/file/listObjs', {
+  return request<API.BaseResponseListString_>('/api/file/listObjs', {
     method: 'GET',
     ...(options || {}),
   })
@@ -85,7 +85,7 @@ export async function uploadFileUsingPost(
     }
   })
 
-  return request<API.BaseResponse>('/api/file/upload', {
+  return request<API.BaseResponseString_>('/api/file/upload', {
     method: 'POST',
     params: {
       ...params,

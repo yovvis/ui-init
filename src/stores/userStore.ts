@@ -1,20 +1,10 @@
 import { ref } from 'vue'
 import { defineStore } from 'pinia'
 import ACCESS_ENUM from '@/hooks/access/accessEnum.ts'
-import { getLoginUserUsingGet, userLogoutUsingPost } from '@/api/userController.ts'
-
-// interface LoginUserVO {
-//   createTime?: string
-//   id?: number
-//   updateTime?: string
-//   userAvatar?: string
-//   userName?: string
-//   userProfile?: string
-//   userRole?: string
-// }
+import { getLoginUserUsingGet } from '@/api/userController.ts'
 
 export const useUserStore = defineStore('userStore', () => {
-  const loginUser = ref<API.BaseResponse>({
+  const loginUser = ref<API.LoginUserVO>({
     userName: '未登录',
   })
 
@@ -40,12 +30,5 @@ export const useUserStore = defineStore('userStore', () => {
     loginUser.value = newLoginUser
   }
 
-  /**
-   * 用户退出
-   */
-  async function doLogout() {
-    await userLogoutUsingPost()
-  }
-
-  return { loginUser, fetchLoginUser, setLoginUser, doLogout }
+  return { loginUser, fetchLoginUser, setLoginUser }
 })
