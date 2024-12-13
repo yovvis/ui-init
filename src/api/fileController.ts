@@ -1,10 +1,55 @@
 // @ts-ignore
 /* eslint-disable */
-import request from '@/core/request.ts'
+import request from '@/request.ts'
 
-/** healthy GET /api/file/do */
-export async function healthyUsingGet(options?: { [key: string]: any }) {
-  return request<API.BaseResponse>('/api/file/do', {
+/** delete PUT /api/file/delete */
+export async function deleteUsingPut(
+  // 叠加生成的Param类型 (非body参数swagger默认没有生成对象)
+  params: API.deleteUsingPUTParams,
+  options?: { [key: string]: any },
+) {
+  return request<API.BaseResponse>('/api/file/delete', {
+    method: 'PUT',
+    params: {
+      ...params,
+    },
+    ...(options || {}),
+  })
+}
+
+/** download GET /api/file/download */
+export async function downloadUsingGet(
+  // 叠加生成的Param类型 (非body参数swagger默认没有生成对象)
+  params: API.downloadUsingGETParams,
+  options?: { [key: string]: any },
+) {
+  return request<any>('/api/file/download', {
+    method: 'GET',
+    params: {
+      ...params,
+    },
+    ...(options || {}),
+  })
+}
+
+/** getHttpUrl GET /api/file/getHttpUrl */
+export async function getHttpUrlUsingGet(
+  // 叠加生成的Param类型 (非body参数swagger默认没有生成对象)
+  params: API.getHttpUrlUsingGETParams,
+  options?: { [key: string]: any },
+) {
+  return request<API.BaseResponse>('/api/file/getHttpUrl', {
+    method: 'GET',
+    params: {
+      ...params,
+    },
+    ...(options || {}),
+  })
+}
+
+/** listObjs GET /api/file/listObjs */
+export async function listObjsUsingGet(options?: { [key: string]: any }) {
+  return request<API.BaseResponse>('/api/file/listObjs', {
     method: 'GET',
     ...(options || {}),
   })

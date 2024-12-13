@@ -9,6 +9,21 @@ declare namespace API {
     id?: number
   }
 
+  type deleteUsingPUTParams = {
+    /** filename */
+    filename: string
+  }
+
+  type downloadUsingGETParams = {
+    /** filename */
+    filename: string
+  }
+
+  type getHttpUrlUsingGETParams = {
+    /** filename */
+    filename: string
+  }
+
   type getUserByIdUsingGETParams = {
     /** id */
     id?: number
